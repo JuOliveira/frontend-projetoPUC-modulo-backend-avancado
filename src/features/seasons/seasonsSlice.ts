@@ -3,30 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 import { createAppAsyncThunk } from "../../types/withTypes";
 import { getSeasonAnime } from "../../services/external_api";
 import { RootState } from "../../store";
-
-type NodeType = {
-  episode: number,
-  airingAt: number,
-  timeUntilAiring: number,
-}
-
-type AnimeItem = {
-  genres: Array<string>,
-  title_romaji: string,
-  title_native: string,
-  title_english: string,
-  airingSchedule: Array<NodeType>,
-  description: string,
-  seasonYear: number,
-  season: string,
-  format: string,
-  coverImage_medium: string,
-  coverImage_large: string,
-}
+import { AnimeItem } from "../../types/apiTypes";
 
 type SeasonsList = {
   [key: string]: Array<AnimeItem>,
-
 }
 
 const initialState: SeasonsList = {
@@ -53,6 +33,7 @@ export const fetchSeasonList = createAppAsyncThunk(
   
       for (const item of response.data.Page.media) {
         const formattedItem = {
+          id: item.id,
           title_romaji: item.title.romaji,
           title_native: item.title.native,
           title_english: item.title.english,

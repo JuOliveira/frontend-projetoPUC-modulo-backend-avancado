@@ -1,44 +1,13 @@
+import { RequestResponse } from "../types/apiTypes"
+
 const apiURL = 'https://graphql.anilist.co'
-
-type ResponseItem = {
-  genres: Array<string>,
-  title: {
-    romaji: string,
-    native: string,
-    english: string,
-  },
-  airingSchedule: {
-    nodes: Array<NodeType>
-  },
-  description: string,
-  seasonYear: number,
-  season: string,
-  format: string,
-  coverImage: {
-    medium: string,
-    large: string,
-  }
-}
-
-type RequestResponse = {
-  data: {
-    Page: {
-      media: Array<ResponseItem>
-    }
-  }
-}
-
-type NodeType = {
-  episode: number,
-  airingAt: number,
-  timeUntilAiring: number,
-}
 
 export function getSeasonAnime(season: string, seasonYear: number): Promise<RequestResponse> {
   const query = `
     query ($season: MediaSeason, $seasonYear: Int) {
       Page {
         media(season: $season, seasonYear: $seasonYear, format: TV) {
+          id
           title {
             romaji
             native
@@ -47,6 +16,8 @@ export function getSeasonAnime(season: string, seasonYear: number): Promise<Requ
           description
           genres
           format
+          season
+          seasonYear
           coverImage {
             medium
             large

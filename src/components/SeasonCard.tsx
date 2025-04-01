@@ -2,19 +2,20 @@ import dayjs from "dayjs"
 import Chip from '@mui/material/Chip';
 
 type SeasonCardProps = {
+  key: number,
   coverImage: string,
   title_romaji: string,
   description: string,
   episode: number,
   airingAt: string | number,
   format: string,
-  genres: Array<string>
+  genres: Array<string>,
 }
 
 function SeasonCard(props: SeasonCardProps) {
   
   return (
-    <div>
+    <div key={props.key}>
       <img src={props.coverImage}/>
       <div>
         <p>{props.title_romaji}</p>

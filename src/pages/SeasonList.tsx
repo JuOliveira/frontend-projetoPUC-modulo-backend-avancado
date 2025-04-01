@@ -6,7 +6,7 @@ import Tab from '@mui/material/Tab';
 
 import { useAppSelector } from "../types/withTypes"
 import { allSeasonsLists } from "../features/seasons/seasonsSlice"
-import { AnimeItem, NodeType } from "../types/apiTypes"
+import { AnimeItem, SeasonNodeType } from "../types/apiTypes"
 import SeasonCard from "../components/SeasonCard"
 
 type SeasonListTabProps = {
@@ -19,10 +19,10 @@ function SeasonListTab(props: SeasonListTabProps) {
   const { seasonList, value, index } = props
 
   const getAiringTime = (animeItem: AnimeItem) => {
-    let time: NodeType
+    let time: SeasonNodeType
 
     if (animeItem.airingSchedule.length !== 0) {
-      time = animeItem.airingSchedule.find(schedule => schedule.timeUntilAiring > 0) as NodeType
+      time = animeItem.airingSchedule.find(schedule => schedule.timeUntilAiring > 0) as SeasonNodeType
 
       if (!time) {
         time = animeItem.airingSchedule.slice(-1)[0]
@@ -40,12 +40,13 @@ function SeasonListTab(props: SeasonListTabProps) {
 
   return (
       <Grid container spacing={2}>
-      {value === index && seasonList.map((anime) => (
+      {value === index && seasonList.map((anime, index) => (
         <Grid size={3} key={anime.id}>
           <SeasonCard
+            key={index}
             title_romaji={anime.title_romaji}
             description={anime.description}
-            coverImage={anime.coverImage_medium}
+            coverImage={anime.coverImage_large}
             episode={getAiringTime(anime).episode}
             format={anime.format}
             airingAt={getAiringTime(anime).airingAt}
@@ -114,6 +115,8 @@ function SeasonList() {
     if (seasonsList && seasonsList.FALL.length !== 0) {
       setFallSeason(seasonsList.FALL)
     }
+
+    console.log('seasonList', seasonsList)
   }, [seasonsList])
 
 

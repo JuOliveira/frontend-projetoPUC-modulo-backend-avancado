@@ -29,6 +29,12 @@ export function getSeasonAnime(season: string, seasonYear: number): Promise<Requ
               timeUntilAiring
             }
           }
+          studios {
+            nodes {
+              name
+              isAnimationStudio
+            }
+          }
         }
       }
     }

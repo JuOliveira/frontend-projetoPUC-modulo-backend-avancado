@@ -1,13 +1,13 @@
 export type ResponseItem = {
   id: number,
-  genres: Array<string>,
+  genres: string[],
   title: {
     romaji: string,
     native: string,
     english: string,
   },
   airingSchedule: {
-    nodes: Array<NodeType>
+    nodes: ScheduleNodeType[]
   },
   description: string,
   seasonYear: number,
@@ -17,20 +17,34 @@ export type ResponseItem = {
     medium: string,
     large: string,
   }
+  studios: {
+    nodes: StudiosNodeType[]
+  }
 }
 
 export type RequestResponse = {
   data: {
     Page: {
-      media: Array<ResponseItem>
+      media: ResponseItem[]
     }
   }
 }
 
-export type NodeType = {
+export type ScheduleNodeType = {
+  episode: number,
+  airingAt: number,
+  timeUntilAiring: number,
+}
+
+export type SeasonNodeType = {
   episode: number,
   airingAt: number | string,
   timeUntilAiring: number,
+}
+
+export type StudiosNodeType = {
+  name: string,
+  isAnimationStudio: boolean,
 }
 
 export type AnimeItem = {
@@ -39,11 +53,12 @@ export type AnimeItem = {
   title_romaji: string,
   title_native: string,
   title_english: string,
-  airingSchedule: Array<NodeType>,
+  airingSchedule: ScheduleNodeType[],
   description: string,
   seasonYear: number,
   season: string,
   format: string,
   coverImage_medium: string,
   coverImage_large: string,
+  studios: StudiosNodeType[],
 }

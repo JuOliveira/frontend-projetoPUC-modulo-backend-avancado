@@ -45,6 +45,7 @@ export const fetchSeasonList = createAppAsyncThunk(
           format: item.format,
           coverImage_medium: item.coverImage.medium,
           coverImage_large: item.coverImage.large,
+          studios: item.studios.nodes,
         }
   
         formattedResponse[season].push(formattedItem)

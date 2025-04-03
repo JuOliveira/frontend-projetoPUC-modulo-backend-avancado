@@ -2,7 +2,7 @@ import { RequestResponse } from "../types/apiTypes"
 
 const apiURL = 'https://graphql.anilist.co'
 
-export function getSeasonAnime(season: string, seasonYear: number): Promise<RequestResponse> {
+export async function getSeasonAnime(season: string, seasonYear: number): Promise<RequestResponse> {
   const query = `
     query ($season: MediaSeason, $seasonYear: Int) {
       Page {

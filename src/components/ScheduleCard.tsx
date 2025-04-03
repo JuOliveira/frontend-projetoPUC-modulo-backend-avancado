@@ -1,5 +1,4 @@
 type ScheduleCardProps = {
-  key: number,
   title_romaji: string,
   coverImage: string,
   airingAt: string,
@@ -8,7 +7,7 @@ type ScheduleCardProps = {
 
 function ScheduleCard(props: ScheduleCardProps) {
  return (
-  <div key={props.key}>
+  <div>
     <img src={props.coverImage}></img>
     <div>
       <p>{props.title_romaji}</p>

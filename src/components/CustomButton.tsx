@@ -3,8 +3,8 @@ import { Button } from "@mui/material"
 import IconSelector from "./IconSelector"
 
 type CustomButtonType = {
-  text: string,
-  onClickFunction: React.MouseEventHandler<HTMLButtonElement> | undefined,
+  text?: string,
+  onClickFunction?: React.MouseEventHandler<HTMLButtonElement> | undefined,
   type: "button" | "submit" | "reset" | undefined,
   btnClassname: string,
   svg: string,
@@ -20,7 +20,7 @@ function CustomButton(props: CustomButtonType) {
       className={btnClassname}
     >
       <IconSelector svg={svg} classname={svgClassname}/>
-      {text}
+      { text && <p>{text}</p> }
     </Button>
   )
 }

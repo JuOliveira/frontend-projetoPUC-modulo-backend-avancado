@@ -2,7 +2,6 @@ import dayjs from "dayjs"
 import Chip from '@mui/material/Chip';
 
 type SeasonCardProps = {
-  key: number,
   coverImage: string,
   title_romaji: string,
   description: string,
@@ -15,7 +14,7 @@ type SeasonCardProps = {
 function SeasonCard(props: SeasonCardProps) {
   
   return (
-    <div key={props.key}>
+    <div>
       <img src={props.coverImage}/>
       <div>
         <p>{props.title_romaji}</p>
@@ -24,8 +23,8 @@ function SeasonCard(props: SeasonCardProps) {
         <p>Format: {props.format}</p>
         <p>Airing: {typeof props.airingAt === 'string' ? props.airingAt : dayjs.unix(props.airingAt).format('DD-MM-YYYY')}</p>
         <div>
-          {props.genres.map(genre => (
-            <Chip label={genre}/>
+          {props.genres.map((genre, index) => (
+            <Chip key={index} label={genre}/>
           ))}
         </div>
       </div>

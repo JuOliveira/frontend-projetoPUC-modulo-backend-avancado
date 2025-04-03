@@ -5,6 +5,10 @@ import List from '../assets/svg/list.svg?react'
 import Home from '../assets/svg/home.svg?react'
 import ArrowCircleLeft from '../assets/svg/arrow_circle_left.svg?react'
 import CheckCircle from '../assets/svg/check_circle.svg?react'
+import Delete from '../assets/svg/delete.svg?react'
+import Favorite from '../assets/svg/favorite.svg?react'
+import FavoriteFilled from '../assets/svg/favorite-filled.svg?react'
+import Search from '../assets/svg/search.svg?react'
 
 
 type IconsType = {
@@ -20,6 +24,10 @@ function IconSelector({svg, classname}: {svg: string, classname: string}) {
     "Home": Home,
     "ArrowCircleLeft": ArrowCircleLeft,
     "CheckCircle": CheckCircle,
+    "Delete": Delete,
+    "Favorite": Favorite,
+    "FavoriteFilled": FavoriteFilled,
+    "Search": Search,
   }
 
   const Icon = Icons[svg]

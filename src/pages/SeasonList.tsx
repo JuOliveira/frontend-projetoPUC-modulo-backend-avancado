@@ -6,11 +6,11 @@ import Tab from '@mui/material/Tab';
 
 import { useAppSelector } from "../types/withTypes"
 import { allSeasonsLists } from "../features/seasons/seasonsSlice"
-import { AnimeItem, SeasonNodeType } from "../types/api_types"
+import { SeasonAnimeItem, SeasonNodeType } from "../types/api_types"
 import SeasonCard from "../components/SeasonCard"
 
 type SeasonListTabProps = {
-  seasonList: Array<AnimeItem>,
+  seasonList: Array<SeasonAnimeItem>,
   value: number,
   index: number,
 }
@@ -18,7 +18,7 @@ type SeasonListTabProps = {
 function SeasonListTab(props: SeasonListTabProps) {
   const { seasonList, value, index } = props
 
-  const getAiringTime = (animeItem: AnimeItem) => {
+  const getAiringTime = (animeItem: SeasonAnimeItem) => {
     let time: SeasonNodeType
 
     if (animeItem.airingSchedule.length !== 0) {
@@ -60,10 +60,10 @@ function SeasonListTab(props: SeasonListTabProps) {
 
 function SeasonList() {
   const seasonsList = useAppSelector(allSeasonsLists)
-  const [winterSeason, setWinterSeason] = useState<Array<AnimeItem>>([])
-  const [springSeason, setSpringSeason] = useState<Array<AnimeItem>>([])
-  const [summerSeason, setSummerSeason] = useState<Array<AnimeItem>>([])
-  const [fallSeason, setFallSeason] = useState<Array<AnimeItem>>([])
+  const [winterSeason, setWinterSeason] = useState<Array<SeasonAnimeItem>>([])
+  const [springSeason, setSpringSeason] = useState<Array<SeasonAnimeItem>>([])
+  const [summerSeason, setSummerSeason] = useState<Array<SeasonAnimeItem>>([])
+  const [fallSeason, setFallSeason] = useState<Array<SeasonAnimeItem>>([])
 
   const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue)

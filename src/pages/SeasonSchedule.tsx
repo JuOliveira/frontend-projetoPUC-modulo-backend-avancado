@@ -4,7 +4,7 @@ import { DataGrid, GridColDef } from "@mui/x-data-grid"
 
 import { useAppSelector } from "../types/withTypes"
 import { allSeasonsLists } from "../features/seasons/seasonsSlice"
-import { AnimeItem } from "../types/apiTypes"
+import { SeasonAnimeItem } from "../types/api_types"
 import ScheduleCard from "../components/ScheduleCard"
 
 type AnimeScheduleItem = {
@@ -51,7 +51,7 @@ function SeasonSchedule() {
 
   useEffect(() => {
     const formatScheduleData = () => {
-      let currentSeasonList: AnimeItem[] = []
+      let currentSeasonList: SeasonAnimeItem[] = []
       const formattedRows: formattedRows[] = []
       const weekDays = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
       const currentSchedule: currentSchedule = {

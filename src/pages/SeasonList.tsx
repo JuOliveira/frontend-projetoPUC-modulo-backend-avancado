@@ -6,7 +6,7 @@ import Tab from '@mui/material/Tab';
 
 import { useAppSelector } from "../types/withTypes"
 import { allSeasonsLists } from "../features/seasons/seasonsSlice"
-import { AnimeItem, SeasonNodeType } from "../types/apiTypes"
+import { AnimeItem, SeasonNodeType } from "../types/api_types"
 import SeasonCard from "../components/SeasonCard"
 
 type SeasonListTabProps = {

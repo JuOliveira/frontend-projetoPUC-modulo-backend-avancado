@@ -8,12 +8,8 @@ import ListItemButton from '@mui/material/ListItemButton'
 
 import CustomButton from "../components/CustomButton"
 import SearchCard from "../components/SearchCard";
-import { 
-  addAnime, 
-  searchAnime, 
-  ResponseAnimeItem, 
-  InputAnimeItem 
-} from "../services/anime_api"
+import { addAnime, searchAnime } from "../services/anime_api"
+import { InputAnimeItem, ResponseAnimeItem } from "../types/anime_api_types"
 import IconSelector from "../components/IconSelector"
 import { anime_user_status, status} from "../utils/constants"
 

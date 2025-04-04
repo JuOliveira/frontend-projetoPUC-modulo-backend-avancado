@@ -1,6 +1,6 @@
 import { GenresArray } from "./api_types"
 
-export type MangaListItemType = {
+export type AnimeListItemType = {
   id: number,
   title_romaji: string,
   title_native: string,
@@ -10,43 +10,35 @@ export type MangaListItemType = {
   cover_image_large: string,
   start_date: string,
   end_date: string,
+  season: string,
   status: string,
-  volumes: number,
-  chapters: number,
-  story: string,
-  art: string,
-  rating: number,
-  user_status: number,
-  is_favorite: boolean
-  genres: GenresArray[]
-}
-
-export type ResponseMangaList = {
-  data: MangaListItemType[]
-}
-
-export type InputMangaItem = {
-  id: number,
-  title_romaji: string,
-  title_native: string,
-  title_english: string,
-  description: string,
-  cover_image_medium: string,
-  cover_image_large: string,
-  start_date: string,
-  end_date: string,
-  status: string,
-  volumes: number,
-  chapters: number,
-  story: string,
-  art: string,
+  episodes: number,
   rating: number,
   user_status: string,
-  is_favorite: boolean
-  genres: string[]
+  is_favorite: boolean,
+  genres: GenresArray[],
 }
 
-export type MangaItemType = {
+export type InputAnimeItem = {
+  id: number,
+  title_romaji: string,
+  title_native: string,
+  title_english: string,
+  description: string,
+  cover_image_medium: string,
+  cover_image_large: string,
+  start_date: string,
+  end_date: string,
+  season: string,
+  status: string,
+  episodes: number,
+  rating: number,
+  user_status: string,
+  is_favorite: boolean,
+  genres: string[],
+}
+
+export type AnimeItemType = {
   data: {
     id: number,
     title_romaji: string,
@@ -57,19 +49,17 @@ export type MangaItemType = {
     cover_image_large: string,
     start_date: string,
     end_date: string,
+    season: string,
     status: string,
-    volumes: number,
-    chapters: number,
-    story: string,
-    art: string,
+    episodes: number,
     rating: number,
     user_status: string,
-    is_favorite: boolean
-    genres: GenresArray[]
+    is_favorite: boolean,
+    genres: GenresArray[],
   }
 }
 
-export type MangaSearchItem = {
+export type ResponseAnimeItem = {
   id: number,
   genres: string[],
   title: {
@@ -78,8 +68,9 @@ export type MangaSearchItem = {
     english: string,
   },
   description: string,
-  volumes: number,
-  chapters: number,
+  seasonYear: number,
+  season: string,
+  format: string,
   startDate: {
     day: number,
     month: number,
@@ -95,22 +86,14 @@ export type MangaSearchItem = {
     large: string,
   }
   status: string,
-  staff: {
-    edges: StaffItem[],
-  }
+  episodes: number,
 }
 
-export type StaffItem = {
-  role: string,
-  id: number,
-  node: {
-    name: {
-      full: string,
-    }
-  }
+export type ResponseAnimeList = {
+  data: AnimeListItemType[]
 }
 
-export type MangaSearchResponse = {
+export type AnimeSearchResponse = {
   data: {
     Page: {
       pageInfo: {
@@ -118,8 +101,7 @@ export type MangaSearchResponse = {
         hasNextPage: boolean,
         currentPage: number,
       },
-      media: MangaSearchItem[]
+      media: ResponseAnimeItem[]
     }
   }
 }
-

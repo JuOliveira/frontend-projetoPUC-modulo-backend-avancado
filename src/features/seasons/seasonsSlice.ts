@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import { createAppAsyncThunk } from "../../types/withTypes";
-import { getSeasonAnime } from "../../services/external_api";
+import { getSeasonAnime } from "../../services/season_api";
 import { RootState } from "../../store";
-import { AnimeItem } from "../../types/apiTypes";
+import { SeasonAnimeItem } from "../../types/api_types";
 
 type SeasonsList = {
-  [key: string]: Array<AnimeItem>,
+  [key: string]: Array<SeasonAnimeItem>,
 }
 
 const initialState: SeasonsList = {

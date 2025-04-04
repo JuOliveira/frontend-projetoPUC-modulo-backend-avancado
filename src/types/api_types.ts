@@ -1,4 +1,4 @@
-export type ResponseItem = {
+export type SeasonItem = {
   id: number,
   genres: string[],
   title: {
@@ -22,10 +22,10 @@ export type ResponseItem = {
   }
 }
 
-export type RequestResponse = {
+export type SeasonListResponse = {
   data: {
     Page: {
-      media: ResponseItem[]
+      media: SeasonItem[]
     }
   }
 }
@@ -47,7 +47,7 @@ export type StudiosNodeType = {
   isAnimationStudio: boolean,
 }
 
-export type AnimeItem = {
+export type SeasonAnimeItem = {
   id: number,
   genres: Array<string>,
   title_romaji: string,

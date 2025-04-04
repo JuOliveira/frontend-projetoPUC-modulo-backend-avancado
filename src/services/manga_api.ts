@@ -4,7 +4,7 @@ import {
   MangaItemType,
   MangaSearchResponse,
 } from "../types/manga_api_types"
-import { ResponseMsg } from "../types/apiTypes"
+import { ResponseMsg } from "../types/api_types"
 
 export async function getMangaList(): Promise<ResponseMangaList> {
   const url = 'http://127.0.0.1:5000/manga_list'
@@ -31,8 +31,8 @@ export async function addManga(manga: InputMangaItem): Promise<ResponseMsg> {
   formData.append('cover_image_large', manga.cover_image_large)
   formData.append('start_date', manga.start_date)
   formData.append('end_date', manga.end_date)
-  formData.append('volumes', String(manga.volumes))
-  formData.append('chapters', String(manga.chapters))
+  formData.append('volumes', manga.volumes !== null ? String(manga.volumes) :'0')
+  formData.append('chapters', manga.chapters !== null ? String(manga.chapters) : '0')
   formData.append('story', manga.story)
   formData.append('art', manga.art)
   formData.append('status', manga.status)
@@ -68,8 +68,8 @@ export async function editManga(manga: InputMangaItem): Promise<ResponseMsg> {
   formData.append('cover_image_large', manga.cover_image_large)
   formData.append('start_date', manga.start_date)
   formData.append('end_date', manga.end_date)
-  formData.append('volumes', String(manga.volumes))
-  formData.append('chapters', String(manga.chapters))
+  formData.append('volumes', manga.volumes !== null ? String(manga.volumes) :'0')
+  formData.append('chapters', manga.chapters !== null ? String(manga.chapters) : '0')
   formData.append('story', manga.story)
   formData.append('art', manga.art)
   formData.append('status', manga.status)
@@ -121,39 +121,40 @@ export async function searchManga(search: string): Promise<MangaSearchResponse> 
           currentPage
         }
         media (search: $search, type: $type) {
-        id
-        title {
-          romaji
-          native
-          english
-        }
-        description
-        coverImage {
-          medium
-          large
-          extraLarge
-        }
-        volumes
-        startDate {
-          day
-          month
-          year
-        }
-        endDate {
-          day
-          month
-          year
-        }
-        status
-        genres
-        chapters
-        staff {
-          edges {
-            role
-            id
-            node {
-              name {
-                full
+          id
+          title {
+            romaji
+            native
+            english
+          }
+          description
+          coverImage {
+            medium
+            large
+            extraLarge
+          }
+          volumes
+          startDate {
+            day
+            month
+            year
+          }
+          endDate {
+            day
+            month
+            year
+          }
+          status
+          genres
+          chapters
+          staff {
+            edges {
+              role
+              id
+              node {
+                name {
+                  full
+                }
               }
             }
           }

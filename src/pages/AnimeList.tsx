@@ -5,7 +5,8 @@ import Grid from "@mui/material/Grid2"
 import CustomButton from "../components/CustomButton"
 import ListCard from "../components/ListCard"
 import ModalContainer from "../components/ModalContainer"
-import { getAnimeList, deleteAnime, AnimeListItemType } from "../services/anime_api"
+import { getAnimeList, deleteAnime } from "../services/anime_api"
+import { AnimeListItemType } from "../types/anime_api_types"
 import { anime_user_status } from "../utils/constants"
 
 
@@ -77,6 +78,7 @@ function AnimeList() {
               user_status={anime_user_status[value.user_status]}
               is_favorite={value.is_favorite}
               onClickFunction={() => handleOpenModal(value.id)}
+              url="/anime-list-item/"
             />
             <ModalContainer
               open={confirmModal.state}

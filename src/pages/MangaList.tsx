@@ -76,6 +76,7 @@ function MangaList() {
               user_status={manga_user_status[value.user_status]}
               is_favorite={value.is_favorite}
               onClickFunction={() => handleOpenModal(value.id)}
+              url="/manga-list-item/"
             />
             <ModalContainer
               open={confirmModal.state}

@@ -17,13 +17,14 @@ type ListCardProps = {
   id: number,
   is_favorite: boolean,
   onClickFunction: (id: number) => void,
+  url: string,
 }
 
 function ListCard(props: ListCardProps) {
   const navigate = useNavigate()
 
   const handleCardClick = (id: number) => {
-    navigate(`/anime-list-item/${id}`)
+    navigate(`${props.url}${id}`)
   }
 
   const favoriteIconStatus = (status: boolean) => {

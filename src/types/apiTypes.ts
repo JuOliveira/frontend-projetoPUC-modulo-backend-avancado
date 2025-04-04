@@ -62,3 +62,12 @@ export type AnimeItem = {
   coverImage_large: string,
   studios: StudiosNodeType[],
 }
+
+export type ResponseMsg = {
+  message: string,
+}
+
+export type GenresArray = {
+  id: number,
+  name: string,
+}

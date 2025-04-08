@@ -36,11 +36,7 @@ function SeasonCard(props: SeasonCardProps) {
                 <Chip 
                   key={index} 
                   label={genre}
-                  sx={{
-                    color: '#FFFFFF',
-                    backgroundColor: '#7873ba',
-                    margin: '2px',
-                  }}
+                  className="season-card-chip"
                 />
               ))}
             </div>

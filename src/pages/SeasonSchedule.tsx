@@ -6,6 +6,7 @@ import { useAppSelector } from "../types/withTypes"
 import { allSeasonsLists } from "../features/seasons/seasonsSlice"
 import { SeasonAnimeItem } from "../types/api_types"
 import ScheduleCard from "../components/ScheduleCard"
+import IconSelector from "../components/IconSelector"
 
 type AnimeScheduleItem = {
   title_romaji: string,
@@ -29,11 +30,15 @@ function SeasonSchedule() {
   const [tableRows, setTableRows] = useState<formattedRows[]>([])
   const columns: GridColDef[] = [
     {
-      field: 'dayOfWeek'
+      field: 'dayOfWeek',
+      cellClassName: 'schedule-grid-column',
+      width: 300,
+      align: 'center',
     },
     {
       field: 'animes',
       display: 'flex',
+      flex: 1,
       renderCell: (params) => (
         params.value.map((item: AnimeScheduleItem, index: number) => (
           <ScheduleCard
@@ -135,12 +140,21 @@ function SeasonSchedule() {
 
   return (
     <div>
+      <div className="c-schedule-title">
+        <IconSelector
+          svg="CalendarMonth"
+          classname="schedule-title-icon"
+        />
+        <h1 className="season-schedule-title">Season Schedule</h1>
+      </div>
       <DataGrid
         columns={columns}
         rows={tableRows}
         hideFooter
         getRowHeight={() => 'auto'}
         columnHeaderHeight={0}
+        className="schedule-grid"
+        disableColumnResize
       />
     </div>
   )

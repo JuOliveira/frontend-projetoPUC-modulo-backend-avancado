@@ -39,7 +39,7 @@ function SeasonListTab(props: SeasonListTabProps) {
   }
 
   return (
-      <Grid container spacing={2} margin={5}>
+      <Grid container spacing={2}>
       {value === index && seasonList.map((anime) => (
         <Grid size={4} key={anime.id}>
           <SeasonCard
@@ -119,7 +119,7 @@ function SeasonList() {
 
 
   return (
-    <div>
+    <div className="c-season-list">
       <div>
         <Tabs value={tabValue} onChange={handleTabChange} centered>
           <Tab label="Winter 2025" value={0}/>

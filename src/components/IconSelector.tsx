@@ -9,6 +9,7 @@ import Delete from '../assets/svg/delete.svg?react'
 import Favorite from '../assets/svg/favorite.svg?react'
 import FavoriteFilled from '../assets/svg/favorite-filled.svg?react'
 import Search from '../assets/svg/search.svg?react'
+import AppLogo from '../assets/svg/AppLogo.svg?react'
 
 
 type IconsType = {
@@ -28,6 +29,7 @@ function IconSelector({svg, classname}: {svg: string, classname: string}) {
     "Favorite": Favorite,
     "FavoriteFilled": FavoriteFilled,
     "Search": Search,
+    "AppLogo": AppLogo,
   }
 
   const Icon = Icons[svg]

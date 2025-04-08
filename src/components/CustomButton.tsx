@@ -7,12 +7,13 @@ type CustomButtonType = {
   onClickFunction?: React.MouseEventHandler<HTMLButtonElement> | undefined,
   type: "button" | "submit" | "reset" | undefined,
   btnClassname: string,
+  textClassname?: string,
   svg: string,
   svgClassname: string,
 }
 
 function CustomButton(props: CustomButtonType) {
-  const { text, onClickFunction, type, btnClassname, svg, svgClassname } = props
+  const { text, onClickFunction, type, btnClassname, svg, svgClassname, textClassname } = props
   return (
     <Button
       type={type}
@@ -20,7 +21,7 @@ function CustomButton(props: CustomButtonType) {
       className={btnClassname}
     >
       <IconSelector svg={svg} classname={svgClassname}/>
-      { text && <p>{text}</p> }
+      { text && <p className={textClassname}>{text}</p> }
     </Button>
   )
 }

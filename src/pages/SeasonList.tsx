@@ -39,9 +39,9 @@ function SeasonListTab(props: SeasonListTabProps) {
   }
 
   return (
-      <Grid container spacing={2}>
+      <Grid container spacing={2} margin={5}>
       {value === index && seasonList.map((anime) => (
-        <Grid size={3} key={anime.id}>
+        <Grid size={4} key={anime.id}>
           <SeasonCard
             title_romaji={anime.title_romaji}
             description={anime.description}

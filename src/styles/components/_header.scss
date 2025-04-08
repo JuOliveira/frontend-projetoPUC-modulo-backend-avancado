@@ -1,0 +1,36 @@
+@use '../abstracts/' as *;
+
+.c-header {
+  display: flex;
+  align-items: center;
+  height: 250px;
+  background-color: $color-header-bg;
+  padding: 20px;
+}
+
+.logo-icon {
+  height: 100px;
+  width: 300px;
+  color: #FFFFFF;
+}
+
+.header-navigation {
+  margin-left: auto;
+  display: flex;
+}
+
+.header-btn-icon {
+  color: #FFFFFF;
+  width: 30px;
+  height: 30px;
+}
+
+.header-btn {
+  color: #FFFFFF;
+  display: inline;
+}
+
+.header-btn-text {
+  font-size: 12px;
+  text-transform: none;
+}

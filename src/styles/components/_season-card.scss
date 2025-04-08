@@ -1,0 +1,48 @@
+@use '../abstracts/' as *;
+
+.c-season-card-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.season-card-image {
+  width: 230px;
+  height: 320px;
+}
+
+.season-card-title {
+  font-family: $font-primary-bold;
+  font-size: 18px;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.season-card-description {
+  width:100%;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 4;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.season-card-item {
+  margin: 4px 0;
+}
+
+.c-season-card-footer {
+  margin-top: auto;
+}
+
+.seasonc-card-chip {
+  color: #FFFFFF;
+  background-color: #bdc2ff;
+}

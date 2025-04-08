@@ -5,6 +5,7 @@ import Grid from "@mui/material/Grid2"
 import CustomButton from "../components/CustomButton"
 import ListCard from "../components/ListCard"
 import ModalContainer from "../components/ModalContainer"
+import IconSelector from "../components/IconSelector"
 import { getAnimeList, deleteAnime } from "../services/anime_api"
 import { AnimeListItemType } from "../types/anime_api_types"
 import { anime_user_status } from "../utils/constants"
@@ -57,19 +58,27 @@ function AnimeList() {
   },[])
 
   return (
-    <div>
-      AnimeList
-      <CustomButton
-        text="Add"
-        onClickFunction={() => navigate('/add-anime')}
-        type="button"
-        btnClassname="primary-btn"
-        svg="AddCircle"
-        svgClassname="btn-icon"
-      />
+    <div className="c-list">
+        <div className="c-schedule-title">
+          <IconSelector
+            svg="List"
+            classname="schedule-title-icon"
+          />
+          <h1 className="season-schedule-title">My Lists</h1>
+        </div>
+        <h2 className="list-subtitle">Anime List</h2>
+        <CustomButton
+          text="Add"
+          onClickFunction={() => navigate('/add-anime')}
+          type="button"
+          btnClassname="primary-btn list-btn-position"
+          textClassname="primary-btn-text"
+          svg="AddCircle"
+          svgClassname="btn-icon"
+        />
       <Grid container spacing={2}>
         {animeList.length !== 0 && animeList.map(value => (
-          <Grid size={3} key={value.id}>
+          <Grid size={2} key={value.id}>
             <ListCard
               id={value.id}
               coverImage={value.cover_image_large}

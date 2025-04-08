@@ -5,6 +5,7 @@ import Grid from "@mui/material/Grid2"
 import CustomButton from "../components/CustomButton"
 import ListCard from "../components/ListCard"
 import ModalContainer from "../components/ModalContainer"
+import IconSelector from "../components/IconSelector"
 import { MangaListItemType } from "../types/manga_api_types"
 import { getMangaList, deleteManga } from "../services/manga_api"
 import { manga_user_status } from "../utils/constants"
@@ -55,19 +56,27 @@ function MangaList() {
   },[])
 
   return (
-    <div>
-      MangaList
+    <div className="c-list">
+      <div className="c-schedule-title">
+        <IconSelector
+          svg="List"
+          classname="schedule-title-icon"
+        />
+        <h1 className="season-schedule-title">My Lists</h1>
+      </div>
+      <h2 className="list-subtitle">Manga List</h2>
       <CustomButton
         text="Add"
         onClickFunction={() => navigate('/add-manga')}
         type="button"
         btnClassname="primary-btn"
+        textClassname="primary-btn-text"
         svg="AddCircle"
         svgClassname="btn-icon"
       />
       <Grid container spacing={2}>
         {mangaList.length !== 0 && mangaList.map(value => (
-          <Grid size={3} key={value.id}>
+          <Grid size={2} key={value.id}>
             <ListCard
               id={value.id}
               coverImage={value.cover_image_large}

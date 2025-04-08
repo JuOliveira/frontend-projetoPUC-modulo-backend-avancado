@@ -1,0 +1,48 @@
+@use '../abstracts/' as *;
+
+.c-list-card {
+  width: 230px;
+}
+
+.list-card-image {
+  width: 230px;
+  height: 320px;
+}
+
+.list-card-title {
+  font-family: $font-primary-bold;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.list-card-item {
+  font-family: $font-primary-bold;
+  color: #7873ba;
+  margin-top: 10px;
+}
+
+.c-list-card-actions {
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px;
+}
+
+.favorite-icon {
+  color: #e01616;
+}
+
+.list-card-btn {
+  padding: 0;
+  min-width: none;
+  width: 40px;
+  height: 40px;
+
+  &:hover {
+    border: 2px solid #7873ba;
+    background-color: #FFFFFF;
+  }
+}
+
+.list-card-icon {
+  color: #7873ba;
+}

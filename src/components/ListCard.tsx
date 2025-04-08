@@ -34,33 +34,37 @@ function ListCard(props: ListCardProps) {
   }
 
   return (
-    <Card sx={{maxWidth: 230}}>
+    <Card 
+      className='c-list-card'
+    >
       <CardActionArea
         onClick={() => handleCardClick(props.id)}
       >
         <CardMedia
           component="img"
           image={props.coverImage}
-          height={320}
+          className='list-card-image'
           alt='anime cover art'
         />
         <CardContent>
           <div>
-            <p>{props.title_romaji}</p>
+            <p className='list-card-title'>{props.title_romaji}</p>
             <Rating value={props.rating} readOnly/>
-            <p>{props.user_status}</p>
+            <p className='list-card-item'>{props.user_status}</p>
           </div>
         </CardContent>
       </CardActionArea>
-      <CardActions>
+      <CardActions
+        className='c-list-card-actions'
+      >
+        <IconSelector svg={favoriteIconStatus(props.is_favorite)} classname="favorite-icon"/>
         <CustomButton
           type='button'
           svg='Delete'
-          svgClassname='card-icon'
-          btnClassname='card-btn'
+          svgClassname='list-card-icon'
+          btnClassname='list-card-btn'
           onClickFunction={() => props.onClickFunction(props.id)}
         />
-        <IconSelector svg={favoriteIconStatus(props.is_favorite)} classname='favorite-icon'/>
       </CardActions>
     </Card>
   )

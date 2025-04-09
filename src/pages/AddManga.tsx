@@ -58,30 +58,33 @@ function AddManga() {
   }
 
   return (
-    <div>
-      AddManga
-      <CustomButton
-        text="Back"
-        onClickFunction={() => navigate(-1)}
-        type="button"
-        btnClassname="primary-btn"
-        svg="ArrowCircleLeft"
-        svgClassname="btn-icon"
-      />
+    <div className="c-search">
+      <h1 className="search-title">Add Manga</h1>
       {showSearch ? (
         <div>
-          <div>
+          <div className="c-search-input">
+            <CustomButton
+              text="Back"
+              onClickFunction={() => navigate(-1)}
+              type="button"
+              btnClassname="primary-btn"
+              textClassname="primary-btn-text"
+              svg="ArrowCircleLeft"
+              svgClassname="btn-icon"
+            />
             <input
               type="text"
               value={searchValue}
               placeholder="Search manga"
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => setSearchValue(event.target.value)}
+              className="search-input"
             />
             <CustomButton
               text="Search"
               type="button"
-              btnClassname="search-btn"
-              svgClassname="search-icon-btn"
+              btnClassname="primary-btn"
+              svgClassname="btn-icon"
+              textClassname="primary-btn-text"
               svg="Search"
               onClickFunction={() => handleSearch(searchValue)}
             />
@@ -93,7 +96,9 @@ function AddManga() {
                   key={result.id}
                   onClick={() => selectResult(result.id)}
                 >
-                  <ListItem>
+                  <ListItem
+                    className="search-list-item"
+                  >
                     <SearchCard
                       coverImage={result.coverImage.large}
                       title_romaji={result.title.romaji}
@@ -139,58 +144,68 @@ function AddManga() {
             resetForm,
           }) => (
             <form onSubmit={handleSubmit}>
-              <img
-                src={selectedResult!.coverImage.large}
-              />
-              <div>
-                  <div>
-                    <p>{selectedResult?.title.romaji}</p>
+              <div className="c-list-item">
+                <img className="list-item-image" src={selectedResult!.coverImage.large}/>
+                <div className="c-list-item-content">
+                  <div className="c-list-item-title">
+                    <p className="list-item-title">{selectedResult?.title.romaji}</p>
                     <Checkbox
                       name="is_favorite"
-                      icon={<IconSelector svg="Favorite" classname="favorite-input"/>}
-                      checkedIcon={<IconSelector svg="FavoriteFilled" classname="favorite-input"/>}
+                      icon={<IconSelector svg="Favorite" classname="favorite-icon"/>}
+                      checkedIcon={<IconSelector svg="FavoriteFilled" classname="favorite-icon"/>}
                       checked={values.is_favorite}
                       onChange={handleChange}
                     />
                   </div>
-                  <p>English title: {selectedResult?.title.english}</p>
-                  <p>{selectedResult?.description}</p>
-                  <Rating
-                    name="rating"
-                    value={values.rating}
-                    onChange={handleChange}
-                  />
-                  <select
-                    name="user_status"
-                    value={values.user_status}
-                    onChange={handleChange}
-                  >
-                      <option value='none'>
+                  <p className="list-item-text list-item-margin"><b>English title: </b>{selectedResult?.title.english}</p>
+                  <p className="list-item-text list-item-margin"><b>Japanese title: </b>{selectedResult?.title.native}</p>
+                  <p className="list-item-text list-item-margin" dangerouslySetInnerHTML={{__html: selectedResult!.description}}/>
+                  <div className="c-list-item-rating">
+                    <p className="list-item-text"><b>Rating: </b></p>
+                    <Rating
+                      name="rating"
+                      value={values.rating}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="c-select">
+                    <label className="list-item-text" htmlFor="user_status"><b>Status: </b></label>
+                    <select
+                      name="user_status"
+                      value={values.user_status}
+                      onChange={handleChange}
+                      className="list-item-select"
+                    >
+                      <option className="select-hidden" value='none'>
                         Choose a status
                       </option>
-                    {Object.keys(manga_user_status).map((item) => (
-                      <option key={item} value={item}>
-                        {manga_user_status[item]}
-                      </option>
-                    ))}
-                  </select>
+                      {Object.keys(manga_user_status).map((item) => (
+                        <option key={item} value={item}>
+                          {manga_user_status[item]}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                   <div>
                     <CustomButton
                       text="Cancel"
                       type="button"
                       svg="Cancel"
-                      svgClassname="form-btn-icon"
-                      btnClassname="form-btn"
+                      svgClassname="secondary-btn-icon"
+                      btnClassname="secondary-btn button-margin"
+                      textClassname="secondary-btn-text"
                       onClickFunction={() => cancelAddManga(resetForm)}
                     />
                     <CustomButton
                       text="Save"
                       type="submit"
                       svg="CheckCircle"
-                      svgClassname="form-btn-icon"
-                      btnClassname="form-btn"
+                      svgClassname="btn-icon"
+                      btnClassname="primary-btn"
+                      textClassname="primary-btn-text"
                     />
                   </div>
+                </div>
               </div>
             </form>
           )}

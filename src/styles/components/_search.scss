@@ -10,3 +10,22 @@
   text-align: center;
   margin: 20px 0;
 }
+
+.c-search-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-input {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 30px;
+  border-radius: 20px;
+  border: 2px solid #7873ba;
+  outline: none;
+}
+
+.search-list-item {
+  justify-content: center;
+}

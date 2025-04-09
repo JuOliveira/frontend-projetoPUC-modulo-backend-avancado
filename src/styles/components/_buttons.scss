@@ -3,6 +3,7 @@
 .primary-btn {
   background-color: #7873ba;
   border: 2px solid #7873ba;
+  height: 56px;
 
   &:hover {
     background-color: #504c85;
@@ -26,11 +27,14 @@
 .btn-icon {
   color: #FFFFFF;
   margin-right: 10px;
+  width: 32px;
+  height: 32px;
 }
 
 .secondary-btn {
   background-color: #FFFFFF;
   border: 2px solid #7873ba;
+  height: 56px;
 
   &:hover {
     background-color: #7873ba;
@@ -54,6 +58,8 @@
 .secondary-btn-icon {
   color: #7873ba;
   margin-right: 10px;
+  width: 32px;
+  height: 32px;
 }
 
 .button-margin {

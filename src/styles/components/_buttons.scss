@@ -1,0 +1,78 @@
+@use '../abstracts/' as *;
+
+.primary-btn {
+  background-color: #7873ba;
+  border: 2px solid #7873ba;
+
+  &:hover {
+    background-color: #504c85;
+    border: 2px solid #504c85;
+
+    .primary-btn-text {
+      color: #FFFFFF;
+    }
+
+    .btn-icon {
+      color: #FFFFFF;
+    }
+  }
+}
+
+.primary-btn-text {
+  color: #FFFFFF;
+  font-family: $font-primary-bold;
+}
+
+.btn-icon {
+  color: #FFFFFF;
+  margin-right: 10px;
+}
+
+.secondary-btn {
+  background-color: #FFFFFF;
+  border: 2px solid #7873ba;
+
+  &:hover {
+    background-color: #7873ba;
+    border: 2px solid #7873ba;
+
+    .secondary-btn-text {
+      color: #FFFFFF;
+    }
+
+    .secondary-btn-icon {
+      color: #FFFFFF;
+    }
+  }
+}
+
+.secondary-btn-text {
+  color: #7873ba;
+  font-family: $font-primary-bold;
+}
+
+.secondary-btn-icon {
+  color: #7873ba;
+  margin-right: 10px;
+}
+
+.button-margin {
+  margin-right: 20px;
+}
+
+.button-width {
+  width: 100px;
+  align-self: center;
+}
+
+.modal-close-button {
+  width: 60px;
+  height: 60px;
+  margin-left: auto;
+}
+
+.modal-closeBtn-icon {
+  width: 40px;
+  height: 40px;
+  color: #FFFFFF;
+}

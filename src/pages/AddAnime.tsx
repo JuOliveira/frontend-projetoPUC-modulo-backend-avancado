@@ -53,13 +53,14 @@ function AddAnime() {
   }
 
   return (
-    <div>
-      AddAnime
+    <div className="c-search">
+      <h1 className="search-title">Add Anime</h1>
       <CustomButton
         text="Back"
         onClickFunction={() => navigate(-1)}
         type="button"
         btnClassname="primary-btn"
+        textClassname="primary-btn-text"
         svg="ArrowCircleLeft"
         svgClassname="btn-icon"
       />
@@ -114,7 +115,7 @@ function AddAnime() {
             cover_image_medium: selectedResult!.coverImage.medium,
             cover_image_large: selectedResult!.coverImage.large,
             start_date: `${selectedResult!.startDate.day}-${selectedResult!.startDate.month}-${selectedResult!.startDate.year}`,
-            end_date: `${selectedResult!.endDate.day}-${selectedResult!.endDate.month}-${selectedResult!.endDate.year}`,
+            end_date: selectedResult!.endDate.day === null ? ' ' : `${selectedResult!.endDate.day}-${selectedResult!.endDate.month}-${selectedResult!.endDate.year}`,
             season: `${selectedResult!.season} ${selectedResult!.seasonYear}`,
             status: selectedResult!.status,
             episodes: selectedResult!.episodes,

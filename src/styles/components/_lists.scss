@@ -49,35 +49,70 @@
   margin-top: 10px;
 }
 
-.primary-btn {
-  align-self: flex-end;
-  background-color: #7873ba;
-  border: 2px solid #7873ba;
-
-  &:hover {
-    background-color: #FFFFFF;
-    border: 2px solid #7873ba;
-
-    .primary-btn-text {
-      color: #7873ba;
-    }
-
-    .btn-icon {
-      color: #7873ba;
-    }
-  }
-}
-
 .list-btn-position {
   margin-left: auto;
 }
 
-.primary-btn-text {
-  color: #FFFFFF;
-  font-family: $font-primary-bold;
+.c-list-item {
+  display: flex;
+  padding: 20px;
 }
 
-.btn-icon {
-  color: #FFFFFF;
-  margin-right: 10px;
+.c-list-item-content {  
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+.c-list-item-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.list-item-title {
+  font-family: $font-primary-bold;
+  font-size: 32px;
+}
+
+.list-item-text {
+  font-family: $font-primary-regular;
+}
+
+.list-item-margin {
+  margin-bottom: 10px;
+}
+
+.list-item-select {
+  margin-left: 5px;
+  padding: 10px;
+  border: 2px solid #7873ba;
+  border-radius: 10px;
+  font-family: $font-primary-regular;
+  font-size: 16px;
+}
+
+.c-list-item-rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.c-select {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.select-hidden {
+  display: none;
+}
+
+.rating {
+  margin-bottom: 10px;
+}
+
+.list-item-image {
+  max-width: 230px;
+  max-height: 320px;
 }

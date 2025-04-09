@@ -1,0 +1,33 @@
+.modal-container {
+  .MuiPaper-root {
+    background-color: #7873ba;
+  }
+}
+
+.modal-content-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #FFFFFF;
+}
+
+.modal-icon {
+  width: 60px;
+  height: 60px;
+  align-self: center;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+}
+
+.modal-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.c-modal-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+

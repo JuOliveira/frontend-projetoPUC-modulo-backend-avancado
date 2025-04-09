@@ -21,11 +21,11 @@ function ModalContainer(props: ModalContainerProps) {
           onClick={props.handleClose}
           className="modal-close-button"
         >
-          <IconSelector svg="Close" classname="modal-closeBtn-icon"/>
+          <IconSelector svg="Cancel" classname="modal-closeBtn-icon"/>
         </IconButton>
+        <IconSelector svg={props.icon} classname="modal-icon"/>
         <div className="modal-content-container">
-          <IconSelector svg={props.icon} classname="modal-icon"/>
-          <h2>{props.title}</h2>
+          <h2 className="modal-title">{props.title}</h2>
           {props.children}
         </div>
     </Dialog>

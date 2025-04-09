@@ -119,7 +119,7 @@ function AddManga() {
             cover_image_medium: selectedResult!.coverImage.medium,
             cover_image_large: selectedResult!.coverImage.large,
             start_date: `${selectedResult!.startDate.day}-${selectedResult!.startDate.month}-${selectedResult!.startDate.year}`,
-            end_date: `${selectedResult!.endDate.day}-${selectedResult!.endDate.month}-${selectedResult!.endDate.year}`,
+            end_date: selectedResult!.endDate.day === null ? ' ' : `${selectedResult!.endDate.day}-${selectedResult!.endDate.month}-${selectedResult!.endDate.year}`,
             status: selectedResult!.status,
             volumes: selectedResult!.volumes,
             chapters: selectedResult!.chapters,

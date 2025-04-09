@@ -1,0 +1,12 @@
+@use '../abstracts/' as *;
+
+.c-search {
+  padding: 20px;
+}
+
+.search-title {
+  font-family: $font-primary-bold;
+  color: #7873ba;
+  text-align: center;
+  margin: 20px 0;
+}

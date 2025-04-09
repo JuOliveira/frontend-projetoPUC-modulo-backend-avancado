@@ -69,7 +69,7 @@ function MangaList() {
         text="Add"
         onClickFunction={() => navigate('/add-manga')}
         type="button"
-        btnClassname="primary-btn"
+        btnClassname="primary-btn list-btn-position"
         textClassname="primary-btn-text"
         svg="AddCircle"
         svgClassname="btn-icon"
@@ -91,24 +91,26 @@ function MangaList() {
               open={confirmModal.state}
               handleClose={handleCloseModal}
               title="Delete manga from list?"
-              icon='CheckCircle'
+              icon='Delete'
             >
               <p>Are you sure you want to delete this manga from the list?</p>
-              <div>
+              <div className="c-modal-controls">
                 <CustomButton
                   text="Cancel"
                   type="button"
                   svg="Cancel"
-                  svgClassname="modal-btn-icon"
-                  btnClassname="modal-btn"
+                  svgClassname="secondary-btn-icon"
+                  btnClassname="secondary-btn button-margin"
+                  textClassname="secondary-btn-text"
                   onClickFunction={handleCloseModal}
                 />
                 <CustomButton
                   text="Delete"
                   type="button"
                   svg="CheckCircle"
-                  svgClassname="modal-btn-icon"
-                  btnClassname="modal-btn"
+                  svgClassname="btn-icon"
+                  btnClassname="primary-btn"
+                  textClassname="primary-btn-text"
                   onClickFunction={handleDeleteManga}
                 />
               </div>
@@ -126,8 +128,9 @@ function MangaList() {
           text="OK"
           type="button"
           svg="CheckCircle"
-          svgClassname="modal-btn-icon"
-          btnClassname="modal-btn"
+          svgClassname="btn-icon"
+          btnClassname="primary-btn button-width"
+          textClassname="primary-btn-text"
           onClickFunction={() => setResultModal(false)}
         />
       </ModalContainer>

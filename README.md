@@ -42,13 +42,13 @@ Substitua `<URL_DO_REPOSITORIO>` pela URL do repositório.
 ### 2. Build da imagem Docker
 
 ```bash
-docker build -t animanga-tracker .
+docker build -t animanga-tracker-frontend .
 ```
 
 ### 3. Rodar o container
 
 ```bash
-docker run -p 3000:3000 animanga-tracker
+docker run -p 3000:3000 animanga-tracker-frontend
 ```
 
 A aplicação estará disponível em: [http://localhost:3000](http://localhost:3000)

@@ -92,7 +92,8 @@ O AniMangaTracker consome dados da [AniList API](https://anilist.co/), uma API p
 
 Abaixo está o fluxograma da arquitetura da aplicação, que demonstra a estrutura e fluxo de dados:
 
-📌 **![Diagrama da Arquitetura](./DiagramaProjeto.png)**
+📌 
+![Diagrama da Arquitetura](./DiagramaProjeto.png)
 
 ---
 

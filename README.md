@@ -14,6 +14,7 @@ Este projeto foi desenvolvido utilizando as seguintes tecnologias e versões:
 - **React Router** 7.4.0 – Roteamento de páginas de forma simples e poderosa.
 - **Sass** 1.86.0 – Pré-processador CSS para organização e reaproveitamento de estilos.
 - **Material UI (MUI)** 6.4.8 – Componentes de UI com design moderno e acessível.
+- **Docker** latest – Containerização do ambiente de execução.
 
 ---
 
@@ -25,7 +26,7 @@ Para rodar o projeto localmente, você precisa ter instalado em sua máquina:
 - [npm](https://www.npmjs.com/) ou [Yarn](https://yarnpkg.com/)
 - [Docker](https://www.docker.com/)
 
-> ⚠️ O projeto **deve ser executado dentro de um container Docker** para garantir compatibilidade e isolamento de ambiente.
+⚠️ O projeto **deve ser executado dentro de um container Docker** para garantir compatibilidade e isolamento de ambiente.
 
 ---
 
@@ -39,16 +40,16 @@ cd <URL DO REPOSITÓRIO>
 ```
 Substitua `<URL_DO_REPOSITORIO>` pela URL do repositório.
 
-### 2. Build da imagem Docker
+### 2. Construa a imagem Docker
 
 ```bash
-docker build -t animanga-tracker-frontend .
+docker build -t animanga-tracker .
 ```
 
 ### 3. Rodar o container
 
 ```bash
-docker run -p 3000:3000 animanga-tracker-frontend
+docker run -p 3000:3000 animanga-tracker
 ```
 
 A aplicação estará disponível em: [http://localhost:3000](http://localhost:3000)

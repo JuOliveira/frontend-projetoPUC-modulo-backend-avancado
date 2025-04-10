@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router"
 import { Formik, FormikHelpers, FormikState } from "formik"
-import { Checkbox, Rating } from "@mui/material"
+import { Checkbox, Rating, Skeleton } from "@mui/material"
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
@@ -19,14 +19,17 @@ function AddAnime() {
   const [searchResults, setSearchResults] = useState<ResponseAnimeItem[]>([])
   const [showSearch, setShowSearch] = useState(true)
   const [selectedResult, setSelectedResult] = useState<ResponseAnimeItem>()
+  const [loading, setLoading] = useState(false)
 
   const handleSearch = async (query: string) => {
+    setLoading(true)
     const result = await searchAnime(query)
 
     if (result) {
       setSearchResults(result.data.Page.media)
-      console.log('result', result)
     }
+
+    setLoading(false)
   }
 
   const selectResult = (id: number) => {
@@ -41,12 +44,29 @@ function AddAnime() {
     setShowSearch(true)
   }
 
+  const getStartDateString = (
+    startDate: {
+      day: number,
+      month: number, 
+      year: number
+    }, 
+    season: string, 
+    seasonYear: number) => {
+    if (startDate.day === null) {
+      if (season === null) {
+        return ''
+      }
+
+      return `${season} ${seasonYear}`
+    }
+
+    return `${startDate.day}/${startDate.month}/${startDate.year}`
+  }
+
   const onFormSubmit = async (values: InputAnimeItem, actions: FormikHelpers<InputAnimeItem>) => {
-    console.log('values', values)
    const response = await addAnime(values)
 
     if (response) {
-      console.log('response', response)
       actions.resetForm()
       navigate('/anime-list')
     }
@@ -85,26 +105,44 @@ function AddAnime() {
             />
           </div>
           <div>
-            <List>
-              {searchResults.length !== 0 && searchResults.map(result => (
-                <ListItemButton 
-                  key={result.id}
-                  onClick={() => selectResult(result.id)}
-                >
-                  <ListItem
-                    className="search-list-item"
+            {
+              loading ?
+              Array.from({length:12}, (_,index) => 
+                <Skeleton
+                  key={index}
+                  height={320}
+                  variant="rectangular"
+                  animation="wave"
+                  style={{
+                    width: '100%',
+                    borderRadius: '5px',
+                    margin: '15px',
+                  
+                  }}
+                />
+              )
+              :
+              <List>
+                {searchResults.length !== 0 && searchResults.map(result => (
+                  <ListItemButton 
+                    key={result.id}
+                    onClick={() => selectResult(result.id)}
                   >
-                    <SearchCard
-                      coverImage={result.coverImage.large}
-                      title_romaji={result.title.romaji}
-                      description={result.description}
-                      start_date={`${result.startDate.day}/${result.startDate.month}/${result.startDate.year}`}
-                      status={status[result.status]}
-                    />
-                  </ListItem>
-                </ListItemButton>
-              ))}
-            </List>
+                    <ListItem
+                      className="search-list-item"
+                    >
+                      <SearchCard
+                        coverImage={result.coverImage.large}
+                        title_romaji={result.title.romaji}
+                        description={result.description}
+                        start_date={getStartDateString(result.startDate, result.season, result.seasonYear)}
+                        status={status[result.status]}
+                      />
+                    </ListItem>
+                  </ListItemButton>
+                ))}
+              </List>
+            }
           </div>
         </div>
       ) : (
@@ -118,8 +156,8 @@ function AddAnime() {
             description: selectedResult!.description,
             cover_image_medium: selectedResult!.coverImage.medium,
             cover_image_large: selectedResult!.coverImage.large,
-            start_date: `${selectedResult!.startDate.day}-${selectedResult!.startDate.month}-${selectedResult!.startDate.year}`,
-            end_date: selectedResult!.endDate.day === null ? ' ' : `${selectedResult!.endDate.day}-${selectedResult!.endDate.month}-${selectedResult!.endDate.year}`,
+            start_date: getStartDateString(selectedResult!.startDate, selectedResult!.season, selectedResult!.seasonYear),
+            end_date: selectedResult!.endDate.day === null ? '' : `${selectedResult!.endDate.day}-${selectedResult!.endDate.month}-${selectedResult!.endDate.year}`,
             season: `${selectedResult!.season} ${selectedResult!.seasonYear}`,
             status: selectedResult!.status,
             episodes: selectedResult!.episodes,
@@ -162,7 +200,7 @@ function AddAnime() {
                     />
                   </div>
                   <div className="c-select">
-                    <label className="list-item-text" htmlFor="user_status"><b>Status: </b></label>
+                    <label className="list-item-text" htmlFor="user_status"><b>User Status: </b></label>
                     <select
                       name="user_status"
                       value={values.user_status}
@@ -172,9 +210,9 @@ function AddAnime() {
                       <option className="select-hidden" value='none'>
                         Choose a status
                       </option>
-                      {Object.keys(anime_user_status).map((item) => (
+                      {anime_user_status.map((item) => (
                         <option key={item} value={item}>
-                          {anime_user_status[item]}
+                          {item}
                         </option>
                       ))}
                     </select>

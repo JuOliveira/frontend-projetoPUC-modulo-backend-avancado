@@ -16,7 +16,7 @@ export type MangaListItemType = {
   story: string,
   art: string,
   rating: number,
-  user_status: number,
+  user_status: string,
   is_favorite: boolean
   genres: GenresArray[]
 }

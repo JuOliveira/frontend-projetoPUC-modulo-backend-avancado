@@ -1,7 +1,14 @@
 
 import { useState } from "react"
 import { useNavigate } from "react-router"
-import { Checkbox, List, ListItem, ListItemButton, Rating } from "@mui/material"
+import { 
+  Checkbox, 
+  List, 
+  ListItem, 
+  ListItemButton, 
+  Rating,
+  Skeleton, 
+} from "@mui/material"
 import { Formik, FormikHelpers, FormikState } from "formik"
 
 import CustomButton from "../components/CustomButton"
@@ -17,14 +24,17 @@ function AddManga() {
   const [searchResults, setSearchResults] = useState<MangaSearchItem[]>([])
   const [showSearch, setShowSearch] = useState(true)
   const [selectedResult, setSelectedResult] = useState<MangaSearchItem>()
+  const [loading, setLoading] = useState(false)
 
   const handleSearch = async (query: string) => {
+    setLoading(true)
     const result = await searchManga(query)
 
     if (result) {
       setSearchResults(result.data.Page.media)
-      console.log('result', result)
     }
+
+    setLoading(false)
   }
 
   const selectResult = (id: number) => {
@@ -47,11 +57,9 @@ function AddManga() {
   }
 
   const onFormSubmit = async (values: InputMangaItem, actions: FormikHelpers<InputMangaItem>) => {
-    console.log('values', values)
     const response = await addManga(values)
 
     if (response) {
-      console.log('response', response)
       actions.resetForm()
       navigate('/manga-list')
     }
@@ -90,26 +98,44 @@ function AddManga() {
             />
           </div>
           <div>
-            <List>
-              {searchResults.length !== 0 && searchResults.map(result => (
-                <ListItemButton 
-                  key={result.id}
-                  onClick={() => selectResult(result.id)}
-                >
-                  <ListItem
-                    className="search-list-item"
+            {
+              loading ?
+              Array.from({length:12}, (_,index) => 
+                <Skeleton
+                  key={index}
+                  height={320}
+                  variant="rectangular"
+                  animation="wave"
+                  style={{
+                    width: '100%',
+                    borderRadius: '5px',
+                    margin: '15px',
+                  
+                  }}
+                />
+              )
+              :
+              <List>
+                {searchResults.length !== 0 && searchResults.map(result => (
+                  <ListItemButton 
+                    key={result.id}
+                    onClick={() => selectResult(result.id)}
                   >
-                    <SearchCard
-                      coverImage={result.coverImage.large}
-                      title_romaji={result.title.romaji}
-                      description={result.description}
-                      start_date={`${result.startDate.day}/${result.startDate.month}/${result.startDate.year}`}
-                      status={status[result.status]}
-                    />
-                  </ListItem>
-                </ListItemButton>
-              ))}
-            </List>
+                    <ListItem
+                      className="search-list-item"
+                    >
+                      <SearchCard
+                        coverImage={result.coverImage.large}
+                        title_romaji={result.title.romaji}
+                        description={result.description}
+                        start_date={`${result.startDate.day}/${result.startDate.month}/${result.startDate.year}`}
+                        status={status[result.status]}
+                      />
+                    </ListItem>
+                  </ListItemButton>
+                ))}
+              </List>
+            }
           </div>
         </div>
       ) : (
@@ -124,7 +150,7 @@ function AddManga() {
             cover_image_medium: selectedResult!.coverImage.medium,
             cover_image_large: selectedResult!.coverImage.large,
             start_date: `${selectedResult!.startDate.day}-${selectedResult!.startDate.month}-${selectedResult!.startDate.year}`,
-            end_date: selectedResult!.endDate.day === null ? ' ' : `${selectedResult!.endDate.day}-${selectedResult!.endDate.month}-${selectedResult!.endDate.year}`,
+            end_date: selectedResult!.endDate.day === null ? '' : `${selectedResult!.endDate.day}-${selectedResult!.endDate.month}-${selectedResult!.endDate.year}`,
             status: selectedResult!.status,
             volumes: selectedResult!.volumes,
             chapters: selectedResult!.chapters,
@@ -169,7 +195,7 @@ function AddManga() {
                     />
                   </div>
                   <div className="c-select">
-                    <label className="list-item-text" htmlFor="user_status"><b>Status: </b></label>
+                    <label className="list-item-text" htmlFor="user_status"><b>User Status: </b></label>
                     <select
                       name="user_status"
                       value={values.user_status}
@@ -179,9 +205,9 @@ function AddManga() {
                       <option className="select-hidden" value='none'>
                         Choose a status
                       </option>
-                      {Object.keys(manga_user_status).map((item) => (
+                      {manga_user_status.map((item) => (
                         <option key={item} value={item}>
-                          {manga_user_status[item]}
+                          {item}
                         </option>
                       ))}
                     </select>

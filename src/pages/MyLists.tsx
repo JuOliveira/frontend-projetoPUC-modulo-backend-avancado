@@ -19,12 +19,20 @@ function MyLists() {
           onClick={() => navigate('/anime-list')}
           className="list-btn"
         >
+          <IconSelector
+            svg="LiveTV"
+            classname="schedule-btn-icon"
+          />
           <p className="list-btn-text">Anime List</p>
         </Button>
         <Button
           onClick={() => navigate('/manga-list')}
           className="list-btn"
         >
+          <IconSelector
+            svg="MenuBook"
+            classname="schedule-btn-icon"
+          />
           <p className="list-btn-text">Manga List</p>
         </Button>
       </div>

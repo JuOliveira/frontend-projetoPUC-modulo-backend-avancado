@@ -10,6 +10,8 @@ import Favorite from '../assets/svg/favorite.svg?react'
 import FavoriteFilled from '../assets/svg/favorite-filled.svg?react'
 import Search from '../assets/svg/search.svg?react'
 import AppLogo from '../assets/svg/AppLogo.svg?react'
+import LiveTV from '../assets/svg/live_tv.svg?react'
+import MenuBook from '../assets/svg/menu_book.svg?react'
 
 
 type IconsType = {
@@ -30,6 +32,8 @@ function IconSelector({svg, classname}: {svg: string, classname: string}) {
     "FavoriteFilled": FavoriteFilled,
     "Search": Search,
     "AppLogo": AppLogo,
+    "LiveTV": LiveTV,
+    "MenuBook": MenuBook,
   }
 
   const Icon = Icons[svg]

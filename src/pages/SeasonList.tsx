@@ -3,6 +3,7 @@ import dayjs from "dayjs";
 import Grid from "@mui/material/Grid2"
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import Skeleton from '@mui/material/Skeleton';
 
 import { useAppSelector } from "../types/withTypes"
 import { allSeasonsLists } from "../features/seasons/seasonsSlice"
@@ -64,6 +65,7 @@ function SeasonList() {
   const [springSeason, setSpringSeason] = useState<Array<SeasonAnimeItem>>([])
   const [summerSeason, setSummerSeason] = useState<Array<SeasonAnimeItem>>([])
   const [fallSeason, setFallSeason] = useState<Array<SeasonAnimeItem>>([])
+  const [loading, setLoading] = useState(true)
 
   const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue)
@@ -101,7 +103,6 @@ function SeasonList() {
   const [tabValue, setTabValue] = useState<number>(getInitialTab())
 
   useEffect(() => {
-
     if (seasonsList && seasonsList.WINTER.length !== 0) {
       setWinterSeason(seasonsList.WINTER)
     }
@@ -113,6 +114,7 @@ function SeasonList() {
     }
     if (seasonsList && seasonsList.FALL.length !== 0) {
       setFallSeason(seasonsList.FALL)
+      setLoading(false)
     }
 
   }, [seasonsList])
@@ -128,10 +130,36 @@ function SeasonList() {
           <Tab label="Fall 2025" value={3}/>
         </Tabs>
       </div>
-      <SeasonListTab seasonList={winterSeason} value={tabValue} index={0}/>
-      <SeasonListTab seasonList={springSeason} value={tabValue} index={1}/>
-      <SeasonListTab seasonList={summerSeason} value={tabValue} index={2}/>
-      <SeasonListTab seasonList={fallSeason} value={tabValue} index={3}/>
+      {
+        loading ?        
+        <div>
+          <Grid container spacing={2}>
+            {Array.from({length: 6}, (_, index) => (
+              <Grid size={4} key={index}>
+                <Skeleton
+                  width={550}
+                  height={320}
+                  variant="rectangular"
+                  animation="wave"
+                  style={{
+                    borderRadius: '5px',
+                  }}
+                />
+              </Grid>
+            ))
+
+            }
+          </Grid>
+        </div>
+        :
+        <div>
+          <SeasonListTab seasonList={winterSeason} value={tabValue} index={0}/>
+          <SeasonListTab seasonList={springSeason} value={tabValue} index={1}/>
+          <SeasonListTab seasonList={summerSeason} value={tabValue} index={2}/>
+          <SeasonListTab seasonList={fallSeason} value={tabValue} index={3}/>
+        </div>
+      }
+
     </div>
   )
 }

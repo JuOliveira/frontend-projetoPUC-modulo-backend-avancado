@@ -53,7 +53,7 @@ docker run -p 3000:3000 animanga-tracker
 
 A aplicação estará disponível em: [http://localhost:3000](http://localhost:3000)
 
-> 💡 Para personalização do ambiente de desenvolvimento com `npm` ou `yarn`, siga os procedimentos abaixo:
+💡 Para personalização do ambiente de desenvolvimento com `npm` ou `yarn`, siga os procedimentos abaixo:
 
 ### 4. Instale as dependências
 
@@ -92,7 +92,6 @@ O AniMangaTracker consome dados da [AniList API](https://anilist.co/), uma API p
 
 Abaixo está o fluxograma da arquitetura da aplicação, que demonstra a estrutura e fluxo de dados:
 
-📌 
 ![Diagrama da Arquitetura](./DiagramaProjeto.png)
 
 ---
@@ -106,7 +105,7 @@ src/
 ├── features/          # Módulos com estados (Redux slices)
 ├── pages/             # Páginas da aplicação
 ├── routes/            # Configurações de rotas
-├── services/          # Integração com API (GraphQL)
+├── services/          # Integração com API (GraphQL e REST)
 ├── styles/            # Estilos globais (Sass)
 └── utils/             # Funções utilitárias
 ```

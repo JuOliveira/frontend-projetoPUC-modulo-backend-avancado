@@ -8,12 +8,12 @@
 
 Este projeto foi desenvolvido utilizando as seguintes tecnologias e versões:
 
-- **Vite** 6.2.0 – Bundler moderno e rápido para desenvolvimento frontend.
+- **Vite** 6.2.0 – Bundler para desenvolvimento frontend.
 - **React** 19.0.0 – Biblioteca para construção de interfaces declarativas.
-- **Redux Toolkit** 2.6.1 – Gerenciamento de estado global de forma eficiente.
-- **React Router** 7.4.0 – Roteamento de páginas de forma simples e poderosa.
+- **Redux Toolkit** 2.6.1 – Gerenciamento de estado global.
+- **React Router** 7.4.0 – Roteamento de páginas.
 - **Sass** 1.86.0 – Pré-processador CSS para organização e reaproveitamento de estilos.
-- **Material UI (MUI)** 6.4.8 – Componentes de UI com design moderno e acessível.
+- **Material UI (MUI)** 6.4.8 – Componentes de UI.
 - **Docker** latest – Containerização do ambiente de execução.
 
 ---
@@ -40,13 +40,15 @@ cd <URL DO REPOSITÓRIO>
 ```
 Substitua `<URL_DO_REPOSITORIO>` pela URL do repositório.
 
+## 🐳 Executando com Docker (recomendado)
+
 ### 2. Construa a imagem Docker
 
 ```bash
 docker build -t animanga-tracker .
 ```
 
-### 3. Rodar o container
+### 3. Execute o container
 
 ```bash
 docker run -p 3000:3000 animanga-tracker
@@ -54,7 +56,9 @@ docker run -p 3000:3000 animanga-tracker
 
 A aplicação estará disponível em: [http://localhost:3000](http://localhost:3000)
 
-💡 Para personalização do ambiente de desenvolvimento com `npm` ou `yarn`, siga os procedimentos abaixo:
+## 🔧 Executando Localmente com npm ou yarn (sem Docker)
+
+> Recomendado apenas para desenvolvimento e testes locais.
 
 ### 4. Instale as dependências
 
@@ -110,9 +114,3 @@ src/
 ├── styles/            # Estilos globais (Sass)
 └── utils/             # Funções utilitárias
 ```
-
----
-
-## 📃 Licença
-
-Este projeto está licenciado sob a [MIT License](LICENSE).
